@@ -1,0 +1,19 @@
+@import "~tailwindcss/base";
+@import "~tailwindcss/components";
+@import "~tailwindcss/utilities";
+
+h1 {
+  @apply text-4xl font-semibold leading-tight text-gray-900;
+}
+
+h2 {
+  @apply text-3xl font-semibold leading-tight text-gray-900;
+}
+
+h3 {
+  @apply text-2xl font-semibold leading-tight text-gray-900;
+}
+
+p {
+  @apply text-base font-light leading-relaxed text-gray-700;
+}
