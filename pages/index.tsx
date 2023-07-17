@@ -1,14 +1,15 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Layout from '@/components/layout'
 
 const Home: NextPage = () => {
   return (
-    <>
+    <Layout>
       <Head>
         <title>Home</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-    </>
+      <p>Welcome to my portfolio!</p>
+    </Layout>
   )
 }
 
