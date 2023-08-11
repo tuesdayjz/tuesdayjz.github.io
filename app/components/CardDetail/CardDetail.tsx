@@ -1,10 +1,9 @@
-import Image from "next/image";
 import { Education } from "../../education/educationData";
 
 export default function CardDetail({ data }: { data: Education }) {
   return (
     <div className="p-10 w-50 bg-white rounded-lg flex flex-col items-center border-gray-700 border-2">
-      <Image
+      <img
         alt=""
         src={data.imageSrc}
         height={600}

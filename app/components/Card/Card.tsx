@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Card({
   id,
@@ -13,7 +12,7 @@ export default function Card({
   return (
     <Link href={`/education/${id}`}>
       <div className="bg-white px-5 pt-5 pb-5 rounded-lg">
-        <Image
+        <img
           alt=""
           src={imageSrc}
           height={300}
