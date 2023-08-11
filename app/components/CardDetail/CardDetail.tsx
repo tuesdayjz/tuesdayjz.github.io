@@ -1,13 +1,7 @@
-"use client";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Education } from "../../education/educationData";
 
 export default function CardDetail({ data }: { data: Education }) {
-  const router = useRouter();
-  function handleBack() {
-    router.back();
-  }
   return (
     <div className="p-10 w-50 bg-white rounded-lg flex flex-col items-center border-gray-700 border-2">
       <Image
@@ -21,7 +15,7 @@ export default function CardDetail({ data }: { data: Education }) {
         <h2 className="text-[1.5rem] mb-2 text-center">{data.title}</h2>
         <p>{data.description}</p>
         <div className="flex flex-col items-center mt-4">
-          <button onClick={handleBack} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">back</button>
+          <p className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"><a href="/education">back</a></p>
         </div>
       </div>
     </div>
