@@ -1,12 +1,8 @@
 import CardDetail from "../../components/CardDetail/CardDetail";
 import swagData, { Education } from "../educationData";
 
-export default function WorkPage({
-  params: { id },
-}: {
-  params: { id: string };
-}) {
-  const data: Education = swagData.find((p) => p.id === id)!;
+export default function educationPage() {
+  const data: Education = swagData.find((p) => p.id === "junior")!;
 
   return (
     <div className="w-8/12 container mx-auto my-10">
