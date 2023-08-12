@@ -11,13 +11,13 @@ export default function Card({
   }) {
   return (
     <Link href={`/education/${id}`}>
-      <div className="bg-white px-5 pt-5 pb-5 rounded-lg">
+      <div className="bg-white px-5 pt-5 pb-5 rounded-lg flex">
         <img
           alt=""
           src={imageSrc}
           height={300}
           width={400}
-          className="w-full object-cover mb-5"
+          className="h-20 object-cover mb-5 pr-10"
         />
         <h2 className="text-[1.5rem]">{title}</h2>
       </div>

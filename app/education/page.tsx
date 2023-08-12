@@ -4,7 +4,7 @@ import Card from "../components/Card/Card"
 export default function Education() {
   const data = swagData;
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 auto-rows-max gap-6 m-10">
+    <div className="grid grid-rows-1 sm:grid-rows-2 md:grid-rows-3 lg:grid-rows-3 gap-6 m-10">
       {data.map(({ id, title, imageSrc }) => (
         <Card key={id} id={id} title={title} imageSrc={imageSrc}></Card>
         ))}
