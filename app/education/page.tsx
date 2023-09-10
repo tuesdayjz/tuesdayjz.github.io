@@ -1,13 +1,34 @@
-import swagData from "./educationData"
-import Card from "../components/Card/Card"
+import React from "react";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+
+import educationData from "./educationData";
 
 export default function Education() {
-  const data = swagData;
+  const data = educationData;
+
   return (
-    <div className="grid grid-rows-1 sm:grid-rows-2 md:grid-rows-3 lg:grid-rows-3 gap-6 m-10">
-      {data.map(({ id, title, imageSrc }) => (
-        <Card key={id} id={id} title={title} imageSrc={imageSrc}></Card>
-        ))}
-    </div>
+    <Grid container spacing={2} justifyContent="center" m={2}>
+      {data.map(({id, title, imageSrc}) => (
+        <Grid item key={id} xs={12} sm={6} md={4} lg={4}>
+          <Card>
+            <CardMedia
+              component="img"
+              height="200"
+              image={imageSrc}
+              alt={title}
+            />
+            <CardContent>
+              <Typography variant="h6" component="div">
+                {title}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+      ))}
+    </Grid>
   );
 }

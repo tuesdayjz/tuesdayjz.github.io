@@ -1,14 +1,32 @@
+import React from "react";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+
 export default function EducationsLayout({
   children,
 }: {
-    children: React.ReactNode;
-  }) {
+  children: React.ReactNode;
+}) {
   return (
-  <main className="bg-gray-200 h-screen px-[4rem] py-[2rem]">
-    <h2 className="text-[2rem] w-[30rem] border-b-2 order-solid border-gray-400 mb-[4rem]">
-      Education
-    </h2>
-    {children}
-    </main>
-  )
+    <Container
+      maxWidth="lg"
+      style={{
+        backgroundColor: "#f5f5f5",
+        minHeight: "100vh",
+        padding: "2rem 4rem",
+      }}
+    >
+      <Typography
+        variant="h2"
+        style={{
+          borderBottom: "2px solid #ccc",
+          width: "30rem",
+          marginBottom: "4rem",
+        }}
+      >
+        Education
+      </Typography>
+      {children}
+    </Container>
+  );
 }

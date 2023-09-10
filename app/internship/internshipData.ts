@@ -8,18 +8,18 @@ export type Internship = {
 
 const internshipData: Internship[] = [
   {
-    title: "And-D Inc.",
+    title: "And-D, inc.",
     imageSrc: "/internship/and-d.png",
     description: ["2023/3 - 2023/8", "backend engineer"],
     link: "https://www.and-d.co.jp/",
     stack: ["Ruby on Rails", "Node.js", "Docker", "AWS"],
   },
   {
-    title: "Progate Inc.",
+    title: "Progate, inc.",
     imageSrc: "/internship/progate.webp",
     description: ["2023/8 - now", "front & backend engineer"],
     link: "https://prog-8.com/about",
-    stack: ["React.js", "Next.js", "TypeScript", "Docker", "AWS"],
+    stack: ["React.js", "Next.js", "TypeScript", "Docker", "AWS", "Go"],
   },
 ];
 
