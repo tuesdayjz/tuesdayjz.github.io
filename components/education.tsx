@@ -30,12 +30,12 @@ const EducationItem = (props: {
 
 const Education = () => {
   return (
-    <Box sx={{ alignSelf: "center" }}>
+    <Box maxWidth="md">
       <Stack direction="row" spacing={2} alignItems="center" mt="30px">
         <ArrowForwardIosRounded />
         <Typography variant="h5">Education</Typography>
       </Stack>
-      <List>
+      <List dense>
         <EducationItem
           school="Waseda University"
           degree="M.S. in Computer Science"
