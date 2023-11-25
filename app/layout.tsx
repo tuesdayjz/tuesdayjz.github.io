@@ -1,51 +1,24 @@
-import React from "react";
-import {
-  CssBaseline,
-  Container,
-  AppBar,
-  Toolbar,
-  Typography,
-  Link,
-  Button,
-} from "@mui/material";
-import HomeIcon from "@mui/icons-material/Home";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
 
-export default function RootLayout(props: {
-  children: React.ReactNode;
-  modal: React.ReactNode;
-}) {
+export const metadata = {
+  title: "tuesdayjz.github.io",
+  description: "home page of tuesdayjz.github.io",
+};
+
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <CssBaseline />
-      <html lang="en">
-        <body>
-          <AppBar position="static">
-            <Toolbar>
-              <Typography variant="h4" component="div">
-                <Link
-                  href="./"
-                  color="inherit"
-                  style={{textDecoration: "none"}}
-                >
-                  kayo tei
-                </Link>
-              </Typography>
-            </Toolbar>
-          </AppBar>
-          <Container>
-            {props.children}
-            {props.modal}
-          </Container>
-          <div style={{ textAlign: "center", marginTop: "2rem" }}>
-            <Button
-              variant="contained"
-              color="primary"
-              href="/"
-              startIcon={<HomeIcon />}
-            >Home</Button>
-          </div>
-        </body>
-      </html>
-    </>
+    <html lang="ja">
+      <head>
+        <meta charSet="utf-8" />
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+      </head>
+      <body>
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </body>
+    </html>
   );
 }
