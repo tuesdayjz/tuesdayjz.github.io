@@ -31,7 +31,7 @@ const Affiliation = () => {
               Department of Computer Science and Engineering
             </Typography>
             <Typography variant="body1">
-              Bachelor's Program at
+              Bachelor's Program at{" "}
               <Link href="https://www.ueda.info.waseda.ac.jp/index_j.html">
                 Ueda Labolatory
               </Link>
