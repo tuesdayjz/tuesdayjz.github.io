@@ -15,7 +15,7 @@ const Affiliation = () => {
     <Box maxWidth="md">
       <Stack direction="row" spacing={2} alignItems="center" mt="30px">
         <ArrowForwardIosRounded />
-        <Typography variant="h6">Affiliation</Typography>
+        <Typography variant="h5">Affiliation</Typography>
       </Stack>
       <List dense>
         <ListItem>
@@ -31,7 +31,7 @@ const Affiliation = () => {
               Department of Computer Science and Engineering
             </Typography>
             <Typography variant="body1">
-              Bachelor's Program at{" "}
+              Bachelor's Program at
               <Link href="https://www.ueda.info.waseda.ac.jp/index_j.html">
                 Ueda Labolatory
               </Link>
