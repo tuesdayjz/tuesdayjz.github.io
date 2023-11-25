@@ -1,23 +1,31 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-
-export const metadata = {
-  title: "tuesdayjz.github.io",
-  description: "home page of tuesdayjz.github.io",
-};
+import { Grid } from "@mui/material";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ja">
+    <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
+        <title>tuesdayjz</title>
+        <meta name="description" content="tuesdayjz's portfolio" />
+        <meta name="author" content="tuesdayjz" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#ffffff" />
       </head>
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <main>
+          <Grid
+            container
+            justifyContent="center"
+            direction="column"
+            alignItems="center"
+          >
+            <Header />
+            {children}
+            <Footer />
+          </Grid>
+        </main>
       </body>
     </html>
   );

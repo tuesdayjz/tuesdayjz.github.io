@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { NextPage } from "next";
 import Education from "@/components/education";
 import Career from "@/components/career";
@@ -8,13 +8,13 @@ import Affiliation from "@/components/affiliation";
 
 const Portfolio: NextPage = () => {
   return (
-    <Box maxWidth="md">
+    <Grid container maxWidth="600px" direction="column">
       <Affiliation />
       <Interest />
       <Hobby />
       <Education />
       <Career />
-    </Box>
+    </Grid>
   );
 };
 

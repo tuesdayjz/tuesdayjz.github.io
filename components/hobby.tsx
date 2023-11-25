@@ -27,7 +27,7 @@ const HobbyItem = (props: { hobby: string; description?: string }) => {
 
 const Hobby = () => {
   return (
-    <Box maxWidth="md">
+    <Box maxWidth="600px">
       <Stack direction="row" spacing={2} alignItems="center" mt="30px">
         <ArrowForwardIosRounded />
         <Typography variant="h5">Hobbies</Typography>

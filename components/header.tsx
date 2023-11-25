@@ -1,11 +1,4 @@
-import {
-  Box,
-  Typography,
-  Stack,
-  Button,
-  AppBar,
-  Container,
-} from "@mui/material";
+import { Box, Typography, Stack, Button, AppBar, Grid } from "@mui/material";
 import { GitHub, LinkedIn, Twitter } from "@mui/icons-material";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 
@@ -39,8 +32,14 @@ const Header = () => {
       position="static"
       color="transparent"
       elevation={0}
+      sx={{ maxWidth: "600px" }}
     >
-      <Container maxWidth="md">
+      <Grid
+        container
+        maxWidth="600px"
+        justifyContent="center"
+        alignItems="center"
+      >
         <Box
           sx={{
             display: "flex",
@@ -53,7 +52,7 @@ const Header = () => {
             <Buttons />
           </Stack>
         </Box>
-      </Container>
+      </Grid>
     </AppBar>
   );
 };

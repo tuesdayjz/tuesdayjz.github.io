@@ -32,7 +32,7 @@ const CareerItem = (props: {
 
 const Career = () => {
   return (
-    <Box maxWidth="md">
+    <Box maxWidth="600px">
       <Stack direction="row" spacing={2} alignItems="center" mt="30px">
         <ArrowForwardIosRounded />
         <Typography variant="h5">Career</Typography>

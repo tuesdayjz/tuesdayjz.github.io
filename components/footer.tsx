@@ -1,4 +1,4 @@
-import { AppBar, Container, Typography } from "@mui/material";
+import { AppBar, Grid, Typography } from "@mui/material";
 
 const Footer = () => {
   return (
@@ -7,12 +7,18 @@ const Footer = () => {
       position="static"
       color="transparent"
       elevation={0}
+      sx={{ maxWidth: "600px" }}
     >
-      <Container maxWidth="md">
+      <Grid
+        container
+        maxWidth="600px"
+        justifyContent="center"
+        alignItems="center"
+      >
         <Typography variant="body1" alignSelf="center">
           © 2023 tuesdayjz
         </Typography>
-      </Container>
+      </Grid>
     </AppBar>
   );
 };
