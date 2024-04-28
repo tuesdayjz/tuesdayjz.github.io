@@ -1,57 +1,102 @@
-import { ArrowForwardIosRounded, ComputerRounded } from "@mui/icons-material";
+import { ComputerRounded } from "@mui/icons-material";
 import {
   Box,
   List,
   ListItem,
-  ListItemIcon,
   ListItemText,
   Typography,
   Stack,
 } from "@mui/material";
+import Link from "next/link";
+
+const CareerList = [
+  {
+    company: "Fixstars Corporation",
+    url: "https://www.fixstars.com/",
+    stack: "C++, Python.",
+    date: "2024.5 - 2024.6",
+    description:
+      "I will be part of a team optimizing machine learning compilers.",
+  },
+  {
+    company: "Progate, Inc",
+    url: "https://progate.com/",
+    stack: "Go, Typescript. React.js, Next.js, MySQL, AWS, Docker, CircleCI.",
+    date: "2023.8 - now",
+    description: "Developing Progate Path's DB, backend, frontend, CLI tool.",
+    now: true,
+  },
+  {
+    company: "and-d, Inc",
+    url: "https://www.and-d.co.jp/",
+    stack: "Ruby, Javascript, Python. Ruby on Rails, Node.js, AWS, Docker.",
+    date: "2023.3 - 2023.7",
+    description:
+      "Developed a AI-based slide generator, signage system for a large-scale event.",
+  },
+];
 
 const CareerItem = (props: {
   company: string;
   stack: string;
   date: string;
   description: string;
+  url: string;
+  now?: boolean;
 }) => {
   return (
-    <ListItem>
-      <ListItemIcon>
-        <ComputerRounded />
-      </ListItemIcon>
-      <ListItemText>
-        <Typography variant="h6">{props.company}</Typography>
-        <Typography variant="subtitle1">{props.stack}</Typography>
-        <Typography variant="subtitle1">{props.date}</Typography>
-        <Typography variant="body1">{props.description}</Typography>
-      </ListItemText>
+    <ListItem sx={{ paddingBottom: 2 }}>
+      <Stack direction="row" spacing={2} alignItems="center">
+        <Box
+          bgcolor={props.now ? "skyblue" : "lightgrey"}
+          height={80}
+          borderRadius={100}
+          width={5}
+        />
+        <Stack direction="column" spacing={0.5}>
+          <ListItemText
+            primary={
+              <Stack direction="row" spacing={1} alignItems="center">
+                <Link href={props.url}>
+                  <Typography variant="body1" component="a">
+                    {props.company}
+                  </Typography>
+                </Link>
+                <Typography variant="body2">{props.date}</Typography>
+              </Stack>
+            }
+            secondary={<Typography variant="body2">{props.stack}</Typography>}
+          />
+          <ListItemText>
+            <Typography variant="body2">{props.description}</Typography>
+          </ListItemText>
+        </Stack>
+      </Stack>
     </ListItem>
   );
 };
 
 const Career = () => {
   return (
-    <Box maxWidth="600px">
-      <Stack direction="row" spacing={2} alignItems="center" mt="30px">
-        <ArrowForwardIosRounded />
+    <Stack direction="column" spacing={2} width={600}>
+      <Stack direction="row" spacing={1} alignItems="center">
+        <ComputerRounded sx={{ color: "grey" }} />
         <Typography variant="h5">Career</Typography>
       </Stack>
       <List>
-        <CareerItem
-          company="Progate, Inc"
-          stack="Go, Typescript. React.js, Next.js, AWS, Docker, CircleCI."
-          date="2023.8 - now"
-          description="Developing Progate Path's frontend, CLI tool."
-        />
-        <CareerItem
-          company="and-d, Inc"
-          stack="Ruby, Javascript, Python. Ruby on Rails, Node.js, AWS, Docker."
-          date="2023.3 - 2023.7"
-          description="Developed a AI-based powerpoint slide generator, and a signage system for a large-scale event."
-        />
+        {CareerList.map((career, index) => (
+          <CareerItem
+            company={career.company}
+            stack={career.stack}
+            date={career.date}
+            description={career.description}
+            url={career.url}
+            now={career.now}
+            key={index}
+          />
+        ))}
       </List>
-    </Box>
+    </Stack>
   );
 };
 

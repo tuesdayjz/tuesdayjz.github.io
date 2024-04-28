@@ -1,45 +1,69 @@
-import { Apartment, ArrowForwardIosRounded } from "@mui/icons-material";
+import { BadgeRounded } from "@mui/icons-material";
 import {
   Box,
-  Typography,
-  Stack,
   List,
   ListItem,
   ListItemText,
-  ListItemIcon,
+  Typography,
+  Stack,
 } from "@mui/material";
 import Link from "next/link";
 
+const School = {
+  school: "Waseda University",
+  degree: "M.E. in Computer Science",
+  year: "1st year",
+  supervisor: "Prof. Kazunori Ueda",
+  url: "https://www.ueda.info.waseda.ac.jp/~ueda/index.html",
+};
+
+const AffiliationItem = (props: {
+  school: string;
+  degree: string;
+  year: string;
+  supervisor: string;
+  url: string;
+}) => {
+  return (
+    <ListItem sx={{ paddingBottom: 2 }}>
+      <Stack direction="row" spacing={2} alignItems="center">
+        <Box bgcolor={"lightgrey"} height={70} borderRadius={100} width={5} />
+        <ListItemText
+          primary={<Typography variant="body1">{props.school}</Typography>}
+          secondary={
+            <Stack>
+              <Typography variant="body2">{`${props.degree} - ${props.year}`}</Typography>
+              <Stack direction="row" spacing={1}>
+                <Typography variant="body2">Supervisor:</Typography>
+                <Link href={props.url}>
+                  <Typography variant="body2">{props.supervisor}</Typography>
+                </Link>
+              </Stack>
+            </Stack>
+          }
+        />
+      </Stack>
+    </ListItem>
+  );
+};
+
 const Affiliation = () => {
   return (
-    <Box maxWidth="600px">
-      <Stack direction="row" spacing={2} alignItems="center" mt="30px">
-        <ArrowForwardIosRounded />
+    <Stack direction="column" spacing={2} width={600}>
+      <Stack direction="row" spacing={1} alignItems="center">
+        <BadgeRounded sx={{ color: "grey" }} />
         <Typography variant="h5">Affiliation</Typography>
       </Stack>
       <List dense>
-        <ListItem>
-          <ListItemIcon>
-            <Apartment />
-          </ListItemIcon>
-          <ListItemText>
-            <Typography variant="body1">Waseda University</Typography>
-            <Typography variant="body1">
-              School of Fundamental Science and Engineering
-            </Typography>
-            <Typography variant="body1">
-              Department of Computer Science and Engineering
-            </Typography>
-            <Typography variant="body1">
-              Bachelor's Program at{" "}
-              <Link href="https://www.ueda.info.waseda.ac.jp/index_j.html">
-                Ueda Labolatory
-              </Link>
-            </Typography>
-          </ListItemText>
-        </ListItem>
+        <AffiliationItem
+          school={School.school}
+          degree={School.degree}
+          year={School.year}
+          supervisor={School.supervisor}
+          url={School.url}
+        />
       </List>
-    </Box>
+    </Stack>
   );
 };
 

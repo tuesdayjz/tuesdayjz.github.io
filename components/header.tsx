@@ -1,4 +1,4 @@
-import { Box, Typography, Stack, Button, AppBar, Grid } from "@mui/material";
+import { Box, Typography, Stack, Button, AppBar } from "@mui/material";
 import { GitHub, LinkedIn, Twitter } from "@mui/icons-material";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 
@@ -34,12 +34,7 @@ const Header = () => {
       elevation={0}
       sx={{ maxWidth: "600px" }}
     >
-      <Grid
-        container
-        maxWidth="600px"
-        justifyContent="center"
-        alignItems="center"
-      >
+      <Stack maxWidth="600px" justifyContent="center" alignItems="center">
         <Box
           sx={{
             display: "flex",
@@ -48,11 +43,14 @@ const Header = () => {
           }}
         >
           <Stack direction="column" spacing={1}>
-            <Typography variant="h4">Kayo Tei (tuesdayjz)</Typography>
+            <Typography variant="h4">Kayo Tei</Typography>
+            <Typography variant="body2">
+              narcissus_blue@ruri.waseda.jp
+            </Typography>
             <Buttons />
           </Stack>
         </Box>
-      </Grid>
+      </Stack>
     </AppBar>
   );
 };

@@ -4,49 +4,69 @@ import {
   List,
   Typography,
   ListItem,
-  ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { ArrowForwardIosRounded, ScienceRounded } from "@mui/icons-material";
+import { ScienceRounded } from "@mui/icons-material";
 
-const InterestItem = (props: { interest: string; description?: string }) => {
+const InterestList = [
+  {
+    interest: "Theory of Programming Languages",
+    description: "Type theory, semantics, formal verification.",
+  },
+  {
+    interest: "Category Theory",
+    description:
+      "string diagrams and their applications to programming languages.",
+  },
+  {
+    interest: "Quantum Theory",
+    description:
+      "quantum computation, quantum programming languages, quantum NLP.",
+  },
+  {
+    interest: "Functional Programming",
+    description:
+      "Haskell, OCaml. I've experienced writing a mini-compiler of OCaml.",
+  },
+];
+
+const InterestItem = (props: { interest: string; description: string }) => {
   return (
-    <ListItem>
-      <ListItemIcon>
-        <ScienceRounded />
-      </ListItemIcon>
-      <ListItemText>
-        <Typography variant="h6">{props.interest}</Typography>
-        {props.description ? (
-          <Typography variant="body1">{props.description}</Typography>
-        ) : null}
-      </ListItemText>
+    <ListItem sx={{ paddingBottom: 2 }}>
+      <Stack direction="row" spacing={2} alignItems="center">
+        <Box bgcolor={"lightgrey"} height={70} borderRadius={100} width={5} />
+        <ListItemText
+          primary={
+            <Stack direction="row" spacing={1} alignItems="center">
+              <Typography variant="body1">{props.interest}</Typography>
+            </Stack>
+          }
+          secondary={
+            <Typography variant="body2">{props.description}</Typography>
+          }
+        />
+      </Stack>
     </ListItem>
   );
 };
 
 const Interest = () => {
   return (
-    <Box maxWidth="600px">
-      <Stack direction="row" spacing={2} alignItems="center" mt="30px">
-        <ArrowForwardIosRounded />
+    <Stack direction="column" spacing={2} width={600}>
+      <Stack direction="row" spacing={1} alignItems="center">
+        <ScienceRounded sx={{ color: "grey" }} />
         <Typography variant="h5">Interests</Typography>
       </Stack>
       <List dense>
-        <InterestItem
-          interest="Theory of Programming Languages"
-          description="Type theory, semantics, and formal verification."
-        />
-        <InterestItem
-          interest="Category Theory"
-          description="Especially interested in string diagrams and their applications to programming languages."
-        />
-        <InterestItem
-          interest="Functional Programming"
-          description="Experienced extending MinCaml, a compiler of minimal subset of OCaml, to support AArch64 assembly language. I'm currently learning Haskell."
-        />
+        {InterestList.map((interest, index) => (
+          <InterestItem
+            key={index}
+            interest={interest.interest}
+            description={interest.description}
+          />
+        ))}
       </List>
-    </Box>
+    </Stack>
   );
 };
 

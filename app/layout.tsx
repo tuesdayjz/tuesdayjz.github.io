@@ -1,31 +1,19 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { Grid } from "@mui/material";
+import { Stack, Box } from "@mui/material";
+import { ReactNode } from "react";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <title>tuesdayjz</title>
-        <meta name="description" content="tuesdayjz's portfolio" />
-        <meta name="author" content="tuesdayjz" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#ffffff" />
-      </head>
       <body>
-        <main>
-          <Grid
-            container
-            justifyContent="center"
-            direction="column"
-            alignItems="center"
-          >
+        <Box component="main" role="main">
+          <Stack direction="column" spacing={2} alignItems="center">
             <Header />
             {children}
             <Footer />
-          </Grid>
-        </main>
+          </Stack>
+        </Box>
       </body>
     </html>
   );
