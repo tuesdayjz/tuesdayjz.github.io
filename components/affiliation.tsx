@@ -1,13 +1,9 @@
+"use client";
+
 import { BadgeRounded } from "@mui/icons-material";
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-  Stack,
-} from "@mui/material";
+import { List, ListItem, ListItemText, Typography, Stack } from "@mui/material";
 import Link from "next/link";
+import { ListItemBar } from "./listItemBar";
 
 const School = {
   school: "Waseda University",
@@ -27,7 +23,7 @@ const AffiliationItem = (props: {
   return (
     <ListItem sx={{ paddingBottom: 2 }}>
       <Stack direction="row" spacing={2} alignItems="center">
-        <Box bgcolor={"lightgrey"} height={70} borderRadius={100} width={5} />
+        <ListItemBar height={70} />
         <ListItemText
           primary={<Typography variant="body1">{props.school}</Typography>}
           secondary={
@@ -49,7 +45,7 @@ const AffiliationItem = (props: {
 
 const Affiliation = () => {
   return (
-    <Stack direction="column" spacing={2} width={600}>
+    <Stack direction="column" spacing={2}>
       <Stack direction="row" spacing={1} alignItems="center">
         <BadgeRounded sx={{ color: "grey" }} />
         <Typography variant="h5">Affiliation</Typography>

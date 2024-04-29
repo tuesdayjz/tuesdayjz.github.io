@@ -1,13 +1,7 @@
 import { ComputerRounded } from "@mui/icons-material";
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-  Stack,
-} from "@mui/material";
+import { List, ListItem, ListItemText, Typography, Stack } from "@mui/material";
 import Link from "next/link";
+import { ListItemBar } from "./listItemBar";
 
 const CareerList = [
   {
@@ -47,12 +41,7 @@ const CareerItem = (props: {
   return (
     <ListItem sx={{ paddingBottom: 2 }}>
       <Stack direction="row" spacing={2} alignItems="center">
-        <Box
-          bgcolor={props.now ? "skyblue" : "lightgrey"}
-          height={80}
-          borderRadius={100}
-          width={5}
-        />
+        <ListItemBar height={80} now={props.now} />
         <Stack direction="column" spacing={0.5}>
           <ListItemText
             primary={
@@ -78,7 +67,7 @@ const CareerItem = (props: {
 
 const Career = () => {
   return (
-    <Stack direction="column" spacing={2} width={600}>
+    <Stack direction="column" spacing={2}>
       <Stack direction="row" spacing={1} alignItems="center">
         <ComputerRounded sx={{ color: "grey" }} />
         <Typography variant="h5">Career</Typography>

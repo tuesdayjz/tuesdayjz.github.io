@@ -1,12 +1,6 @@
-import {
-  Box,
-  Stack,
-  List,
-  Typography,
-  ListItem,
-  ListItemText,
-} from "@mui/material";
+import { Stack, List, Typography, ListItem, ListItemText } from "@mui/material";
 import { ScienceRounded } from "@mui/icons-material";
+import { ListItemBar } from "./listItemBar";
 
 const InterestList = [
   {
@@ -34,7 +28,7 @@ const InterestItem = (props: { interest: string; description: string }) => {
   return (
     <ListItem sx={{ paddingBottom: 2 }}>
       <Stack direction="row" spacing={2} alignItems="center">
-        <Box bgcolor={"lightgrey"} height={70} borderRadius={100} width={5} />
+        <ListItemBar height={70} />
         <ListItemText
           primary={
             <Stack direction="row" spacing={1} alignItems="center">
@@ -52,7 +46,7 @@ const InterestItem = (props: { interest: string; description: string }) => {
 
 const Interest = () => {
   return (
-    <Stack direction="column" spacing={2} width={600}>
+    <Stack direction="column" spacing={2}>
       <Stack direction="row" spacing={1} alignItems="center">
         <ScienceRounded sx={{ color: "grey" }} />
         <Typography variant="h5">Interests</Typography>

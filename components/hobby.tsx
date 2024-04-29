@@ -1,13 +1,7 @@
-import {
-  Box,
-  Stack,
-  List,
-  Typography,
-  ListItem,
-  ListItemText,
-} from "@mui/material";
+import { Stack, List, Typography, ListItem, ListItemText } from "@mui/material";
 import { MusicNoteRounded } from "@mui/icons-material";
 import Link from "next/link";
+import { ListItemBar } from "./listItemBar";
 
 const HobbyList = [
   {
@@ -36,7 +30,7 @@ const HobbyItem = (props: {
   return (
     <ListItem sx={{ paddingBottom: 2 }}>
       <Stack direction="row" spacing={2} alignItems="center">
-        <Box bgcolor={"lightgrey"} height={70} borderRadius={100} width={5} />
+        <ListItemBar height={70} />
         <ListItemText
           primary={
             <Stack direction="row" spacing={1} alignItems="center">
@@ -63,7 +57,7 @@ const HobbyItem = (props: {
 
 const Hobby = () => {
   return (
-    <Stack direction="column" spacing={2} width={600}>
+    <Stack direction="column" spacing={2}>
       <Stack direction="row" spacing={1} alignItems="center">
         <MusicNoteRounded sx={{ color: "grey" }} />
         <Typography variant="h5">Hobbies</Typography>

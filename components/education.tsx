@@ -1,13 +1,7 @@
 import { SchoolRounded, Circle } from "@mui/icons-material";
-import {
-  Typography,
-  Stack,
-  List,
-  ListItem,
-  Box,
-  ListItemText,
-} from "@mui/material";
+import { Typography, Stack, List, ListItem, ListItemText } from "@mui/material";
 import Link from "next/link";
+import { ListItemBar } from "./listItemBar";
 
 const EducationList = [
   {
@@ -74,12 +68,7 @@ const EducationItem = (props: {
   return (
     <ListItem sx={{ paddingBottom: 2 }}>
       <Stack direction="row" spacing={2} alignItems="center">
-        <Box
-          bgcolor={props.Education.now ? "skyblue" : "lightgrey"}
-          height={80}
-          borderRadius={100}
-          width={5}
-        />
+        <ListItemBar height={80} now={props.Education.now} />
         <Stack direction="column" spacing={0.5}>
           <ListItemText
             primary={
@@ -121,14 +110,13 @@ const EducationItem = (props: {
                 alignItems="center"
               >
                 <Circle sx={{ fontSize: 10, color: "lightgrey" }} />
-                <Typography variant="body1">
-                  {conferencePresentation.title}
-                </Typography>
+                <Link href={conferencePresentation.url}>
+                  <Typography variant="body1" component="a">
+                    {conferencePresentation.title}
+                  </Typography>
+                </Link>
                 <Typography variant="body2">
-                  {conferencePresentation.date}
-                </Typography>
-                <Typography variant="body2">
-                  {conferencePresentation.place}
+                  {`${conferencePresentation.date} ${conferencePresentation.place}.`}
                 </Typography>
                 <Typography variant="body2" component="a">
                   {conferencePresentation.class}
@@ -144,7 +132,7 @@ const EducationItem = (props: {
 
 const Education = () => {
   return (
-    <Stack direction="column" spacing={2} width={600}>
+    <Stack direction="column" spacing={2}>
       <Stack direction="row" spacing={1} alignItems="center">
         <SchoolRounded sx={{ color: "grey" }} />
         <Typography variant="h5">Education</Typography>

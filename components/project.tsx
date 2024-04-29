@@ -1,13 +1,7 @@
 import { BookOnlineRounded } from "@mui/icons-material";
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemText,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { List, ListItem, ListItemText, Stack, Typography } from "@mui/material";
 import Link from "next/link";
+import { ListItemBar } from "./listItemBar";
 
 const ProjectList = [
   {
@@ -57,7 +51,7 @@ const ProjectItem = (props: {
   return (
     <ListItem sx={{ paddingBottom: 2 }}>
       <Stack direction="row" spacing={2} alignItems="center">
-        <Box bgcolor={"lightgrey"} height={70} borderRadius={100} width={5} />
+        <ListItemBar height={80} />
         <Stack direction="column" spacing={0.5}>
           <ListItemText
             primary={
@@ -93,7 +87,7 @@ const ProjectItem = (props: {
 
 const Project = () => {
   return (
-    <Stack direction="column" spacing={2} width={600}>
+    <Stack direction="column" spacing={2}>
       <Stack direction="row" spacing={1} alignItems="center">
         <BookOnlineRounded sx={{ color: "grey" }} />
         <Typography variant="h5">Projects</Typography>
