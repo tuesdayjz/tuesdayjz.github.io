@@ -7,10 +7,11 @@ const CareerList = [
   {
     company: "Fixstars Corporation",
     url: "https://www.fixstars.com/",
-    stack: "C++, Python.",
+    stack: "C++, Python, TVM, CUDA, TensorRT.",
     date: "2024.5 - 2024.6",
     description:
-      "I will be part of a team optimizing machine learning compilers.",
+      "Optimizing computational graph in IR of TVM, a machine learning compiler.",
+    now: true,
   },
   {
     company: "Progate, Inc",
