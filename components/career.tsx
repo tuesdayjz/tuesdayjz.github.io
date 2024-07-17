@@ -9,6 +9,7 @@ const CareerList = [
     url: "https://www.morganstanley.com/",
     stack: "Python, Java",
     date: "2024.7.29 - ",
+    description: "Technology Summer Analyst.",
     now: true,
   },
   {
