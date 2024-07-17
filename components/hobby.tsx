@@ -5,12 +5,12 @@ import { ListItemBar } from "./listItemBar";
 
 const HobbyList = [
   {
-    hobby: "Waching Takarazuka Revue and Kabuki",
+    hobby: "Watching Takarazuka Revue and Kabuki",
     description:
       "I'm also interested in learning more about the good food around the theater.",
   },
   {
-    hobby: "competitive programming",
+    hobby: "Competitive Programming",
     description: "My AtCoder Account: TuesdayJZ",
     url: "https://atcoder.jp/users/TuesdayJZ",
   },
