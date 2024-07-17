@@ -5,13 +5,19 @@ import { ListItemBar } from "./listItemBar";
 
 const CareerList = [
   {
+    company: "Morgan Stanley",
+    url: "https://www.morganstanley.com/",
+    stack: "Python, Java",
+    date: "2024.7.29 - ",
+    now: true,
+  },
+  {
     company: "Fixstars Corporation",
     url: "https://www.fixstars.com/",
     stack: "C++, Python, TVM, CUDA, TensorRT.",
     date: "2024.5 - 2024.6",
     description:
       "Optimizing computational graph in IR of TVM, a machine learning compiler.",
-    now: true,
   },
   {
     company: "Progate, Inc",
@@ -19,7 +25,6 @@ const CareerList = [
     stack: "Go, Typescript. React.js, Next.js, MySQL, AWS, Docker, CircleCI.",
     date: "2023.8 - now",
     description: "Developing Progate Path's DB, backend, frontend, CLI tool.",
-    now: true,
   },
   {
     company: "and-d, Inc",
@@ -79,7 +84,7 @@ const Career = () => {
             company={career.company}
             stack={career.stack}
             date={career.date}
-            description={career.description}
+            description={career.description || ""}
             url={career.url}
             now={career.now}
             key={index}

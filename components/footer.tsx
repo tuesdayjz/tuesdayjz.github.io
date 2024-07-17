@@ -11,7 +11,7 @@ const Footer = () => {
     >
       <Stack maxWidth="600px" justifyContent="center" alignItems="center">
         <Typography variant="body1" alignSelf="center">
-          2024 Kayo Tei
+          {new Date().getFullYear()}, Kayo Tei
         </Typography>
       </Stack>
     </AppBar>
