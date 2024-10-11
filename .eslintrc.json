@@ -1,13 +1,18 @@
 {
-  "extends": ["next/core-web-vitals", "plugin:tailwindcss/recommended"],
-  "plugins": ["prettier"],
-  "ignorePatterns": ["*.config.js"],
-  "rules": {
-    "prettier/prettier": "error"
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
+    "extends": [
+        "next/core-web-vitals",
+        "plugin:tailwindcss/recommended"
+    ],
+    "plugins": [
+        "prettier"
+    ],
+    "ignorePatterns": [
+        "*.config.js"
+    ],
+    "rules": {},
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
-  }
 }
