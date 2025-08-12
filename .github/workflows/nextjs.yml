@@ -28,11 +28,6 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-    environment: github-pages
-    env:
-      # This variable is used for the base path, as defined in your workflow.
-      # You can manage it through GitHub repository variables.
-      BRANCH_NAME: ${{ vars.BRANCH_NAME }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -54,36 +49,27 @@ jobs:
             exit 1
           fi
       - name: Setup Node
-        # Updated to the latest major version and LTS node version 20
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
-        # Updated to the latest major version
         uses: actions/configure-pages@v4
         with:
           static_site_generator: next
       - name: Restore cache
-        # Updated to the latest major version
         uses: actions/cache@v4
         with:
           path: |
             .next/cache
-          # Simplified cache key to be based on lock files only, which is more reliable
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}
-          # If lock files didn't change, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-
       - name: Install dependencies and build with Next.js
-        # Combined these two steps for clarity.
-        # The 'next export' is handled implicitly by `actions/configure-pages`
-        # when using `static_site_generator: next`.
         run: |
           ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
           ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
-        # Updated to the latest major version
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
