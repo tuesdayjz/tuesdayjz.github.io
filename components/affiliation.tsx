@@ -7,8 +7,8 @@ import { ListItemBar } from "./listItemBar";
 
 const School = {
     school: "Waseda University",
-    degree: "M.E. in Computer Science",
-    year: "1st year",
+    degree: "M.Eng in Computer Science",
+    year: "2nd year",
     supervisor: "Prof. Kazunori Ueda",
     url: "https://www.ueda.info.waseda.ac.jp/~ueda/index.html",
 };

@@ -47,7 +47,7 @@ const CareerList = [
         company: "Progate, Inc",
         url: "https://progate.com/",
         stack: "Go, Typescript. React.js, Next.js, MySQL, AWS, Docker, CircleCI.",
-        date: "2023.8 - now",
+        date: "2023.8 - 2024.3",
         description: "Intern and part-time: Developed Progate Path's DB, backend, frontend, CLI tool.",
     },
     {

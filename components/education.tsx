@@ -14,6 +14,22 @@ const EducationList = [
         lab: "Ueda Labolatory",
         labUrl: "https://www.ueda.info.waseda.ac.jp/index_j.html",
         now: true,
+        conferencePresentations: [
+            {
+                title: "QPL2025",
+                date: "7/14-7/18",
+                place: "Varna, Bulgaria",
+                class: "Poster",
+                url: "https://qpl2025.github.io/accepted/",
+            },
+            {
+                title: "PPL2025",
+                date: "3/5-3/7",
+                place: "Aichi, Japan",
+                class: "Poster",
+                url: "https://jssst-ppl.org/workshop/2025/program.html#posters",
+            },
+        ],
     },
     {
         name: "Waseda University",
