@@ -1,7 +1,6 @@
 import { Stack } from "@mui/material";
 import { Metadata, NextPage } from "next";
 import Education from "@/components/education";
-import Hobby from "@/components/hobby";
 import Interest from "@/components/interest";
 import Affiliation from "@/components/affiliation";
 
@@ -19,11 +18,10 @@ export const metadata: Metadata = {
 
 const Portfolio: NextPage = () => {
   return (
-    <Stack direction={"column"} spacing={4} sx={{ width: "100%", maxWidth: 600 }}>
+    <Stack direction={"column"} spacing={4} sx={{ width: "100%", maxWidth: 720 }}>
       <Affiliation />
       <Education />
       <Interest />
-      <Hobby />
     </Stack>
   );
 };

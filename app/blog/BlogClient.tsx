@@ -2,40 +2,31 @@
 
 import { PostMeta } from "@/lib/blog";
 import Link from "next/link";
-import { Chip, Stack, Typography, Box, Divider } from "@mui/material";
-import { ArticleRounded } from "@mui/icons-material";
+import { Chip, Stack, Typography, Box } from "@mui/material";
+import { colors } from "@/lib/colors";
+import { siteConfig } from "@/lib/config";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Suspense } from "react";
 
-function PostCard({ post }: { post: PostMeta }) {
+function PostRow({ post }: { post: PostMeta }) {
   const router = useRouter();
   return (
-    <Box sx={{ paddingBottom: 2 }}>
-      <Stack direction="column" spacing={0.5}>
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Link href={`/blog/${post.slug}`} style={{ textDecoration: "none" }}>
-            <Typography variant="body1" sx={{ fontWeight: 500 }}>
-              {post.title}
-            </Typography>
-          </Link>
-          <Typography variant="body2" color="text.secondary">
-            {post.date}
+    <Stack spacing={0.25} sx={{ py: 0.75, borderBottom: "1px solid #1a2a1a" }}>
+      <Stack direction="row" spacing={1.5} alignItems="baseline" flexWrap="wrap" useFlexGap>
+        <Link href={`/blog/${post.slug}`} style={{ textDecoration: "none" }}>
+          <Typography variant="body1" sx={{ color: colors.primary, fontWeight: 600, "&:hover": { textDecoration: "underline" } }}>
+            {post.title}
           </Typography>
-        </Stack>
-        <Stack direction="row" spacing={0.5} flexWrap="wrap">
-          {post.tags.map((tag) => (
-            <Chip
-              key={tag}
-              label={tag}
-              size="small"
-              variant="outlined"
-              clickable
-              onClick={() => router.push(`/blog?tag=${encodeURIComponent(tag)}`)}
-            />
-          ))}
-        </Stack>
+        </Link>
+        <Typography variant="body2" sx={{ color: colors.muted, whiteSpace: "nowrap" }}>{post.date}</Typography>
       </Stack>
-    </Box>
+      <Stack direction="row" spacing={0.75} flexWrap="wrap" useFlexGap>
+        {post.tags.map((tag) => (
+          <Chip key={tag} label={tag} size="small" variant="outlined" clickable
+            onClick={() => router.push(`/blog?tag=${encodeURIComponent(tag)}`)} />
+        ))}
+      </Stack>
+    </Stack>
   );
 }
 
@@ -46,59 +37,41 @@ function BlogList({ posts, tags }: { posts: PostMeta[]; tags: string[] }) {
   const filtered = activeTag ? posts.filter((p) => p.tags.includes(activeTag)) : posts;
 
   return (
-    <Stack direction="column" spacing={2} sx={{ width: "100%", maxWidth: 600 }}>
-      <Stack direction="row" spacing={1} alignItems="center">
-        <ArticleRounded sx={{ color: "grey" }} />
-        <Typography variant="h5">Blog</Typography>
+    <Stack direction="column" spacing={1.5} sx={{ width: "100%", maxWidth: 720 }}>
+      {/* tag filter */}
+      <Stack direction="row" spacing={0.75} alignItems="center">
+        <Typography variant="body2" sx={{ color: colors.chrome, userSelect: "none" }}>$</Typography>
+        <Typography variant="body2" sx={{ color: colors.text }}>
+          ls ~/blog/{activeTag ? `--tag=${activeTag}` : ""}
+        </Typography>
       </Stack>
-      <Typography variant="body2">
-        Tech notes &amp; miscellaneous thoughts. For personal/daily-life posts, see my{" "}
-        <a href="https://oyasai-oishiina.hateblo.jp/" style={{ color: "inherit" }}>
-          Hatena blog
-        </a>{" "}
-        (Japanese).
-      </Typography>
 
-      <Stack direction="row" spacing={0.5} flexWrap="wrap">
-        <Chip
-          label="All"
-          size="small"
-          variant={activeTag ? "outlined" : "filled"}
-          clickable
-          onClick={() => router.push("/blog")}
-        />
+      {/* tag chips */}
+      <Stack direction="row" spacing={0.5} flexWrap="wrap" useFlexGap sx={{ pl: 1.5 }}>
+        <Chip label="all" size="small" variant={activeTag ? "outlined" : "filled"} clickable onClick={() => router.push("/blog")} />
         {tags.map((tag) => (
-          <Chip
-            key={tag}
-            label={tag}
-            size="small"
-            variant={activeTag === tag ? "filled" : "outlined"}
-            clickable
-            onClick={() => router.push(`/blog?tag=${encodeURIComponent(tag)}`)}
-          />
+          <Chip key={tag} label={tag} size="small" variant={activeTag === tag ? "filled" : "outlined"} clickable
+            onClick={() => router.push(`/blog?tag=${encodeURIComponent(tag)}`)} />
         ))}
       </Stack>
 
-      <Divider />
+      {/* post list */}
+      <Box sx={{ pl: 1.5, borderLeft: `2px solid ${colors.border}` }}>
+        {filtered.length === 0 ? (
+          <Typography variant="body2" sx={{ color: colors.chrome }}>no posts found.</Typography>
+        ) : (
+          filtered.map((post) => <PostRow key={post.slug} post={post} />)
+        )}
+      </Box>
 
-      {filtered.length === 0 ? (
-        <Typography variant="body2" color="text.secondary">
-          No posts found.
-        </Typography>
-      ) : (
-        filtered.map((post) => <PostCard key={post.slug} post={post} />)
-      )}
+      <Typography variant="body2" sx={{ color: colors.chrome, fontSize: "0.75rem" }}>
+        # for personal/daily-life posts → <a href={siteConfig.socials.hatena} style={{ color: colors.muted }}>hatena blog</a> (ja)
+      </Typography>
     </Stack>
   );
 }
 
-export default function BlogClient({
-  posts,
-  tags,
-}: {
-  posts: PostMeta[];
-  tags: string[];
-}) {
+export default function BlogClient({ posts, tags }: { posts: PostMeta[]; tags: string[] }) {
   return (
     <Suspense fallback={null}>
       <BlogList posts={posts} tags={tags} />

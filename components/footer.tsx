@@ -1,20 +1,37 @@
-import { AppBar, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
+import { GitHub, LinkedIn, Twitter } from "@mui/icons-material";
+import Link from "next/link";
+import { colors } from "@/lib/colors";
+import { siteConfig } from "@/lib/config";
+import { IconBtn } from "@/components/terminal";
 
 const Footer = () => {
     return (
-        <AppBar
-            component="footer"
-            position="static"
-            color="transparent"
-            elevation={0}
-            sx={{ maxWidth: "600px" }}
-        >
-            <Stack maxWidth="600px" justifyContent="center" alignItems="center">
-                <Typography variant="body1" alignSelf="center">
-                    {new Date().getFullYear()}, Kayo Tei
-                </Typography>
+        <Box sx={{ pt: 2, borderTop: `1px solid ${colors.border}`, mt: 2 }}>
+            <Stack spacing={0.5}>
+                <Stack direction="row" spacing={0.75} alignItems="center">
+                    <Typography variant="body2" sx={{ color: colors.chrome, userSelect: "none" }}>kayo@tuesdayjz</Typography>
+                    <Typography variant="body2" sx={{ color: colors.muted, userSelect: "none" }}>:~$</Typography>
+                    <Typography variant="body2" sx={{ color: colors.text }}>logout</Typography>
+                </Stack>
+                <Stack direction="row" justifyContent="space-between" alignItems="center" flexWrap="wrap" sx={{ gap: 1 }}>
+                    <Typography variant="body2" sx={{ color: colors.chrome }}>
+                        © {new Date().getFullYear()} {siteConfig.name}
+                    </Typography>
+                    <Stack direction="row" spacing={2} alignItems="center">
+                        <Link href="/" style={{ textDecoration: "none" }}>
+                            <Typography variant="body2" sx={{ "&:hover": { color: colors.primary } }}>portfolio</Typography>
+                        </Link>
+                        <Link href="/blog" style={{ textDecoration: "none" }}>
+                            <Typography variant="body2" sx={{ "&:hover": { color: colors.primary } }}>blog</Typography>
+                        </Link>
+                        <IconBtn href={siteConfig.socials.twitter} icon={<Twitter fontSize="small" />} />
+                        <IconBtn href={siteConfig.socials.github} icon={<GitHub fontSize="small" />} />
+                        <IconBtn href={siteConfig.socials.linkedin} icon={<LinkedIn fontSize="small" />} />
+                    </Stack>
+                </Stack>
             </Stack>
-        </AppBar>
+        </Box>
     );
 };
 

@@ -1,24 +1,30 @@
-import { Stack, Typography, Box } from "@mui/material";
-import { ScienceRounded } from "@mui/icons-material";
+import { Stack, Box } from "@mui/material";
 import { getSectionHtml } from "@/lib/content";
+import { colors } from "@/lib/colors";
+import { TerminalPrompt, TerminalBlock } from "@/components/terminal";
 
 const Interest = async () => {
     const html = await getSectionHtml("interest");
     return (
-        <Stack direction="column" spacing={1.5}>
-            <Stack direction="row" spacing={1} alignItems="center">
-                <ScienceRounded sx={{ color: "primary.main", fontSize: 20 }} />
-                <Typography variant="h5">Interests</Typography>
-            </Stack>
-            <Box
-                dangerouslySetInnerHTML={{ __html: html }}
-                sx={{
-                    "& ul": { margin: 0, paddingLeft: 2.5 },
-                    "& li": { color: "text.primary", marginBottom: 0.75, lineHeight: 1.7 },
-                    "& strong": { color: "primary.main" },
-                    "& a": { color: "primary.main", textDecoration: "none", "&:hover": { textDecoration: "underline" } },
-                }}
-            />
+        <Stack spacing={0.5}>
+            <TerminalPrompt cmd="cat interests.md" />
+            <TerminalBlock>
+                <Box
+                    dangerouslySetInnerHTML={{ __html: html }}
+                    sx={{
+                        "& ul": { margin: 0, paddingLeft: 0, listStyle: "none" },
+                        "& li": {
+                            fontSize: "0.875rem", lineHeight: 1.7, marginBottom: 0.75,
+                            paddingLeft: "1rem",
+                        },
+                        "& li strong": {
+                            display: "block", marginLeft: "-1rem",
+                            color: colors.primary, fontWeight: 600,
+                        },
+                        "& a": { color: colors.primary, textDecoration: "none", "&:hover": { textDecoration: "underline" } },
+                    }}
+                />
+            </TerminalBlock>
         </Stack>
     );
 };

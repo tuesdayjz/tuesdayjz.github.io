@@ -2,7 +2,8 @@ import { getPost, getAllPosts } from "@/lib/blog";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Chip, Stack, Typography, Box } from "@mui/material";
-import { ArrowBackRounded } from "@mui/icons-material";
+import { colors } from "@/lib/colors";
+import { TerminalPrompt, TerminalBlock } from "@/components/terminal";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -28,30 +29,40 @@ export default async function PostPage({
   const post = await getPost(slug);
 
   return (
-    <Stack direction="column" spacing={2} sx={{ width: "100%", maxWidth: 600 }}>
+    <Stack direction="column" spacing={1.5} sx={{ width: "100%", maxWidth: 720 }}>
+      {/* back prompt */}
       <Link href="/blog" style={{ textDecoration: "none" }}>
-        <Stack direction="row" spacing={0.5} alignItems="center">
-          <ArrowBackRounded fontSize="small" sx={{ color: "grey" }} />
-          <Typography variant="body2" color="text.secondary">
-            Back to Blog
-          </Typography>
-        </Stack>
+        <TerminalPrompt cmd="cd ~/blog/" />
       </Link>
 
-      <Stack direction="column" spacing={1}>
-        <Typography variant="h5">{post.title}</Typography>
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Typography variant="body2" color="text.secondary">
-            {post.date}
+      {/* cat command + frontmatter block */}
+      <Stack spacing={0.5}>
+        <TerminalPrompt cmd={`cat ${slug}.md`} />
+        <TerminalBlock>
+          <Typography variant="body2" sx={{ color: colors.chrome }}>---</Typography>
+          <Typography variant="body2">
+            <span style={{ color: colors.chrome }}>title</span>
+            <span style={{ color: colors.chrome }}> : </span>
+            {post.title}
           </Typography>
-          <Stack direction="row" spacing={0.5} flexWrap="wrap">
+          <Typography variant="body2">
+            <span style={{ color: colors.chrome }}>date</span>
+            <span style={{ color: colors.chrome }}>  : </span>
+            <span style={{ color: colors.muted }}>{post.date}</span>
+          </Typography>
+          <Stack direction="row" spacing={0.5} alignItems="center">
+            <Typography variant="body2" component="span">
+              <span style={{ color: colors.chrome }}>tags</span>
+              <span style={{ color: colors.chrome }}>  : </span>
+            </Typography>
             {post.tags.map((tag) => (
               <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`}>
                 <Chip label={tag} size="small" variant="outlined" clickable />
               </Link>
             ))}
           </Stack>
-        </Stack>
+          <Typography variant="body2" sx={{ color: colors.chrome }}>---</Typography>
+        </TerminalBlock>
       </Stack>
 
       <Box
@@ -61,23 +72,23 @@ export default async function PostPage({
             fontWeight: 700,
             marginTop: 2,
             marginBottom: 1,
-            color: "#6bcb77",
-            "&::before": { content: '"# "', color: "#3a6a3a" },
+            color: colors.primary,
+            "&::before": { content: '"# "', color: colors.chrome },
           },
-          "& p": { marginBottom: 1.5, color: "#c8e6c9" },
-          "& ul, & ol": { paddingLeft: 3, marginBottom: 1.5, color: "#c8e6c9" },
-          "& a": { color: "#6bcb77" },
+          "& p": { marginBottom: 1.5, color: colors.text },
+          "& ul, & ol": { paddingLeft: 3, marginBottom: 1.5, color: colors.text },
+          "& a": { color: colors.primary },
           "& code": {
             fontFamily: "'Courier New', monospace",
-            backgroundColor: "#161c16",
-            border: "1px solid #1e2e1e",
+            backgroundColor: colors.codeBg,
+            border: `1px solid ${colors.border}`,
             padding: "0 4px",
             borderRadius: 1,
-            color: "#c8e6c9",
+            color: colors.text,
           },
           "& pre": {
-            backgroundColor: "#161c16",
-            border: "1px solid #1e2e1e",
+            backgroundColor: colors.codeBg,
+            border: `1px solid ${colors.border}`,
             padding: 2,
             borderRadius: 1,
             overflowX: "auto",

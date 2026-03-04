@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material/styles";
+import { colors } from "@/lib/colors";
 
 const terminalTheme = createTheme({
   palette: {
@@ -8,14 +9,14 @@ const terminalTheme = createTheme({
       paper: "#111314",
     },
     primary: {
-      main: "#6bcb77",
+      main: colors.primary,
     },
     secondary: {
-      main: "#6bcb77",
+      main: colors.primary,
     },
     text: {
-      primary: "#c8e6c9",
-      secondary: "#7aaa7a",
+      primary: colors.text,
+      secondary: colors.muted,
     },
     divider: "#1e2e1e",
     action: {
@@ -24,10 +25,10 @@ const terminalTheme = createTheme({
   },
   typography: {
     fontFamily: "'Courier New', Courier, monospace",
-    h4: { color: "#6bcb77", fontWeight: 700 },
-    h5: { color: "#6bcb77", fontWeight: 700 },
-    body1: { color: "#c8e6c9" },
-    body2: { color: "#7aaa7a" },
+    h4: { color: colors.primary, fontWeight: 700 },
+    h5: { color: colors.primary, fontWeight: 700 },
+    body1: { color: colors.text },
+    body2: { color: colors.muted },
   },
   components: {
     MuiCssBaseline: {
@@ -55,7 +56,7 @@ const terminalTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          color: "#6bcb77",
+          color: colors.primary,
           "&:hover": { backgroundColor: "rgba(107,203,119,0.08)" },
         },
       },
@@ -64,12 +65,12 @@ const terminalTheme = createTheme({
       styleOverrides: {
         root: {
           borderColor: "#3a6a3a",
-          color: "#c8e6c9",
+          color: colors.text,
           fontFamily: "'Courier New', Courier, monospace",
           "&.MuiChip-filled": {
             backgroundColor: "#2a4a2a",
-            color: "#6bcb77",
-            borderColor: "#6bcb77",
+            color: colors.primary,
+            borderColor: colors.primary,
           },
         },
       },
@@ -81,7 +82,7 @@ const terminalTheme = createTheme({
     },
     MuiLink: {
       styleOverrides: {
-        root: { color: "#6bcb77" },
+        root: { color: colors.primary },
       },
     },
   },

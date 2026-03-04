@@ -1,8 +1,8 @@
-import { SchoolRounded, Circle } from "@mui/icons-material";
-import { Typography, Stack, List, ListItem, ListItemText } from "@mui/material";
+import { Typography, Stack } from "@mui/material";
 import Link from "next/link";
-import { ListItemBar } from "./listItemBar";
 import { getSectionData } from "@/lib/content";
+import { colors } from "@/lib/colors";
+import { TerminalPrompt, TerminalBlock, KV } from "@/components/terminal";
 
 interface ConferencePresentation {
     title: string;
@@ -29,106 +29,38 @@ interface EducationData {
     items: EducationItem[];
 }
 
-const EducationItem = (props: {
-    Education: {
-        name: string;
-        duration: string;
-        url: string;
-        degree: string;
-        department: string;
-        major: string;
-        lab: string;
-        labUrl?: string;
-        now?: boolean;
-        conferencePresentations?: {
-            title: string;
-            date: string;
-            place: string;
-            class: string;
-            url: string;
-        }[];
-    };
-}) => {
-    return (
-        <ListItem sx={{ paddingBottom: 2 }}>
-            <Stack direction="row" spacing={2} alignItems="center">
-                <ListItemBar height={80} now={props.Education.now} />
-                <Stack direction="column" spacing={0.5}>
-                    <ListItemText
-                        primaryTypographyProps={{ component: "div" }}
-                        secondaryTypographyProps={{ component: "div" }}
-                        primary={
-                            <Stack direction="row" spacing={1} alignItems="center">
-                                <Link href={props.Education.url}>
-                                    <Typography variant="body1">
-                                        {props.Education.name}
-                                    </Typography>
-                                </Link>
-                                <Typography variant="body2">
-                                    {props.Education.duration}
-                                </Typography>
-                            </Stack>
-                        }
-                        secondary={
-                            <Typography variant="body2">
-                                {props.Education.degree} - {props.Education.department}
-                            </Typography>
-                        }
-                    />
-                    <Stack direction="row" spacing={1}>
-                        <Typography variant="body1">{`${props.Education.major} - `}</Typography>
-                        {props.Education.labUrl ? (
-                            <Link href={props.Education.labUrl}>
-                                <Typography variant="body1">
-                                    {props.Education.lab}
-                                </Typography>
-                            </Link>
-                        ) : (
-                            <Typography variant="body1">{props.Education.lab}</Typography>
-                        )}
-                    </Stack>
-                    {props.Education.conferencePresentations?.map(
-                        (conferencePresentation, index) => (
-                            <Stack
-                                direction="row"
-                                spacing={1}
-                                key={index}
-                                alignItems="center"
-                            >
-                                <Circle sx={{ fontSize: 10, color: "lightgrey" }} />
-                                <Link href={conferencePresentation.url}>
-                                    <Typography variant="body1">
-                                        {conferencePresentation.title}
-                                    </Typography>
-                                </Link>
-                                <Typography variant="body2">
-                                    {`${conferencePresentation.date} ${conferencePresentation.place}.`}
-                                </Typography>
-                                <Typography variant="body2">
-                                    {conferencePresentation.class}
-                                </Typography>
-                            </Stack>
-                        ),
-                    )}
-                </Stack>
+const EduEntry = ({ edu }: { edu: EducationItem }) => (
+    <TerminalBlock active={edu.now}>
+        {edu.now && (
+            <Typography variant="body2" sx={{ color: colors.primary, mb: 0.25, fontSize: "0.75rem" }}># current</Typography>
+        )}
+        <KV k="school" v={edu.name} href={edu.url} />
+        <KV k="degree" v={edu.degree} />
+        <KV k="dept" v={edu.department} />
+        <KV k="lab" v={edu.lab} href={edu.labUrl} />
+        <KV k="period" v={edu.duration} />
+        {edu.conferencePresentations?.map((p, i) => (
+            <Stack key={i} direction="row" spacing={1}>
+                <Typography variant="body2" sx={{ color: colors.chrome, minWidth: 72, userSelect: "none" }}>
+                    {i === 0 ? "talks :" : ""}
+                </Typography>
+                <Link href={p.url} style={{ textDecoration: "none" }}>
+                    <Typography variant="body2" component="span" sx={{ color: colors.primary, "&:hover": { textDecoration: "underline" } }}>{p.title}</Typography>
+                </Link>
+                <Typography variant="body2" sx={{ color: colors.muted }}>({p.date}, {p.place})</Typography>
             </Stack>
-        </ListItem>
-    );
-};
+        ))}
+    </TerminalBlock>
+);
 
 const Education = () => {
     const { items } = getSectionData<EducationData>("education");
     return (
-        <Stack direction="column" spacing={2}>
-            <Stack direction="row" spacing={1} alignItems="center">
-                <SchoolRounded sx={{ color: "grey" }} />
-                <Typography variant="h5">Education</Typography>
-            </Stack>
-            <List dense>
-                {items.map((Education, index) => (
-                    <EducationItem key={index} Education={Education} />
-                ))}
-            </List>
+        <Stack spacing={1}>
+            <TerminalPrompt cmd="cat education.md" />
+            {items.map((edu, i) => (
+                <EduEntry key={i} edu={edu} />
+            ))}
         </Stack>
     );
 };
