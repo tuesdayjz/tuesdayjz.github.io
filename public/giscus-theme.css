@@ -1,0 +1,77 @@
+/*
+ * Custom Giscus theme — terminal palette
+ * Loaded inside the Giscus iframe on blog post pages.
+ */
+
+main {
+  /* Canvas */
+  --color-canvas-default:          #111314;
+  --color-canvas-subtle:           #161c16;
+  --color-canvas-overlay:          #161c16;
+  --color-canvas-inset:            #0d1110;
+
+  /* Text */
+  --color-fg-default:              #c8e6c9;
+  --color-fg-muted:                #7aaa7a;
+  --color-fg-subtle:               #5a8a5a;
+  --color-fg-on-emphasis:          #c8e6c9;
+
+  /* Borders */
+  --color-border-default:          #2a3a2a;
+  --color-border-muted:            #1e2e1e;
+  --color-border-subtle:           rgba(107, 203, 119, 0.1);
+
+  /* Accent (links, focus rings) */
+  --color-accent-fg:               #6bcb77;
+  --color-accent-subtle:           rgba(107, 203, 119, 0.1);
+  --color-accent-emphasis:         #6bcb77;
+
+  /* Buttons */
+  --color-btn-text:                #c8e6c9;
+  --color-btn-bg:                  #161c16;
+  --color-btn-border:              #2a3a2a;
+  --color-btn-hover-bg:            #1e2e1e;
+  --color-btn-hover-border:        #5a8a5a;
+  --color-btn-active-bg:           #1a221a;
+  --color-btn-active-border:       #6bcb77;
+  --color-btn-selected-bg:         #1a221a;
+  --color-btn-shadow:              0 0 transparent;
+  --color-btn-inset-shadow:        0 0 transparent;
+
+  /* Primary button */
+  --color-btn-primary-text:        #111314;
+  --color-btn-primary-bg:          #6bcb77;
+  --color-btn-primary-border:      #6bcb77;
+  --color-btn-primary-hover-bg:    #5ab366;
+  --color-btn-primary-hover-border:#5ab366;
+  --color-btn-primary-shadow:      0 0 transparent;
+  --color-btn-primary-inset-shadow:0 0 transparent;
+  --color-btn-primary-selected-bg: #6bcb77;
+  --color-btn-primary-selected-shadow: 0 0 transparent;
+  --color-btn-primary-disabled-text: rgba(17,19,20,0.5);
+  --color-btn-primary-disabled-bg: rgba(107,203,119,0.4);
+  --color-btn-primary-disabled-border: rgba(107,203,119,0.4);
+
+  /* Reactions / states */
+  --color-state-closed-fg:         #c8e6c9;
+  --color-state-open-fg:           #6bcb77;
+  --color-state-merged-fg:         #c8e6c9;
+
+  /* Input */
+  --color-input-bg:                #161c16;
+  --color-input-border:            #2a3a2a;
+  --color-input-placeholder:       #5a8a5a;
+  --color-input-disabled-bg:       rgba(22,28,22,0.8);
+
+  /* Inline code */
+  --color-neutral-muted:           rgba(22,28,22,0.8);
+
+  /* Header */
+  --color-header-bg:               #111314;
+  --color-header-text:             #c8e6c9;
+  --color-header-logo:             #6bcb77;
+
+  /* Social reactions */
+  --color-social-reaction-bg-hover:rgba(107,203,119,0.08);
+  --color-social-reaction-bg-reacted-hover: rgba(107,203,119,0.12);
+}

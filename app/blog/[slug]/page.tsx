@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Chip, Stack, Typography, Box } from "@mui/material";
 import { colors } from "@/lib/colors";
 import { TerminalPrompt, TerminalBlock } from "@/components/terminal";
+import GiscusComments from "@/components/GiscusComments";
 
 export async function generateStaticParams() {
   const posts = getAllPosts();
@@ -95,6 +96,8 @@ export default async function PostPage({
           },
         }}
       />
+
+      <GiscusComments />
     </Stack>
   );
 }

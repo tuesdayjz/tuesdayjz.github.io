@@ -8,3 +8,10 @@ export const siteConfig = {
     hatena: "https://oyasai-oishiina.hateblo.jp/",
   },
 } as const;
+
+export const giscusConfig = {
+  repo: "tuesdayjz/tuesdayjz.github.io" as `${string}/${string}`,
+  repoId: "R_kgDOJ75Qwg",
+  category: "Announcements",
+  categoryId: "DIC_kwDOJ75Qws4C3qli",
+} as const;
