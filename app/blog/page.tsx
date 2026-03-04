@@ -3,8 +3,18 @@ import { Metadata } from "next";
 import BlogClient from "./BlogClient";
 
 export const metadata: Metadata = {
-  title: "Blog | tuesdayjz",
-  description: "tuesdayjz's blog",
+  title: "Blog",
+  description: "Tech notes and miscellaneous thoughts by tuesdayjz.",
+  openGraph: {
+    type: "website",
+    url: "/blog",
+    title: "Blog | tuesdayjz",
+    description: "Tech notes and miscellaneous thoughts by tuesdayjz.",
+  },
+  twitter: {
+    title: "Blog | tuesdayjz",
+    description: "Tech notes and miscellaneous thoughts by tuesdayjz.",
+  },
 };
 
 export default function BlogPage() {

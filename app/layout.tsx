@@ -1,29 +1,33 @@
-"use client";
-import Footer from "@/components/footer";
-import Header from "@/components/header";
-import TerminalShell from "@/components/TerminalShell";
-import { Box, ThemeProvider, CssBaseline } from "@mui/material";
+import ClientLayout from "./ClientLayout";
+import { Metadata } from "next";
 import { ReactNode } from "react";
-import terminalTheme from "@/lib/theme";
+import { siteConfig } from "@/lib/config";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://tuesdayjz.github.io"),
+  title: {
+    default: "tuesdayjz",
+    template: "%s | tuesdayjz",
+  },
+  description: `${siteConfig.name}'s personal site — portfolio, notes, and blog.`,
+  authors: [{ name: siteConfig.name }],
+  icons: { icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫑</text></svg>" },
+  openGraph: {
+    type: "website",
+    siteName: "tuesdayjz",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary",
+    creator: "@vegetable_umai",
+  },
+};
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <ThemeProvider theme={terminalTheme}>
-          <CssBaseline />
-          <Box
-            component="main"
-            role="main"
-            sx={{ minHeight: "100vh", bgcolor: "background.default", display: "flex", justifyContent: "center", px: 2 }}
-          >
-            <TerminalShell>
-              <Header />
-              {children}
-              <Footer />
-            </TerminalShell>
-          </Box>
-        </ThemeProvider>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

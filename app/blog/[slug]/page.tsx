@@ -18,7 +18,20 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPost(slug);
-  return { title: `${post.title} | tuesdayjz` };
+  return {
+    title: post.title,
+    description: `${post.title} — a post by tuesdayjz`,
+    openGraph: {
+      type: "article",
+      url: `/blog/${slug}`,
+      title: post.title,
+      description: `${post.title} — a post by tuesdayjz`,
+      publishedTime: post.date,
+      authors: ["Kayo Tei"],
+      tags: post.tags,
+    },
+    twitter: { title: post.title, description: `${post.title} — a post by tuesdayjz` },
+  };
 }
 
 export default async function PostPage({
