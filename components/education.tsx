@@ -2,64 +2,32 @@ import { SchoolRounded, Circle } from "@mui/icons-material";
 import { Typography, Stack, List, ListItem, ListItemText } from "@mui/material";
 import Link from "next/link";
 import { ListItemBar } from "./listItemBar";
+import { getSectionData } from "@/lib/content";
 
-const EducationList = [
-    {
-        name: "Waseda University",
-        duration: "2024/4 - 2026/3",
-        url: "https://www.waseda.jp/top/en",
-        degree: "Master's Program",
-        department: "Graduate School of Fundamental Science and Engineering",
-        major: "Department of Computer Science and Engineering",
-        lab: "Ueda Labolatory",
-        labUrl: "https://www.ueda.info.waseda.ac.jp/index_j.html",
-        now: true,
-        conferencePresentations: [
-            {
-                title: "QPL2025",
-                date: "7/14-7/18",
-                place: "Varna, Bulgaria",
-                class: "Poster",
-                url: "https://qpl2025.github.io/accepted/",
-            },
-            {
-                title: "PPL2025",
-                date: "3/5-3/7",
-                place: "Aichi, Japan",
-                class: "Poster",
-                url: "https://jssst-ppl.org/workshop/2025/program.html#posters",
-            },
-        ],
-    },
-    {
-        name: "Waseda University",
-        duration: "2020/4 - 2024/3",
-        url: "https://www.waseda.jp/top/en",
-        degree: "Bachelor's Program",
-        department: "School of Fundamental Science and Engineering",
-        major: "Department of Computer Science and Engineering",
-        lab: "Ueda Labolatory",
-        labUrl: "https://www.ueda.info.waseda.ac.jp/index_j.html",
-        conferencePresentations: [
-            {
-                title: "PPL2024",
-                date: "3/5-3/7",
-                place: "Nigata, Japan",
-                class: "Poster",
-                url: "https://jssst-ppl.org/workshop/2024/program.html#posters",
-            },
-        ],
-    },
-    {
-        name: "Tokyo Metropolitan Hibiya High School",
-        duration: "2016/4 - 2019/3",
-        url: "https://hibiya-h.metro.ed.jp/",
-        degree: "High School Diploma",
-        department: "General",
-        major: "General",
-        lab: "Badminton Club",
-    },
-];
+interface ConferencePresentation {
+    title: string;
+    date: string;
+    place: string;
+    class: string;
+    url: string;
+}
+
+interface EducationItem {
+    name: string;
+    duration: string;
+    url: string;
+    degree: string;
+    department: string;
+    major: string;
+    lab: string;
+    labUrl?: string;
+    now?: boolean;
+    conferencePresentations?: ConferencePresentation[];
+}
+
+interface EducationData {
+    items: EducationItem[];
+}
 
 const EducationItem = (props: {
     Education: {
@@ -87,10 +55,12 @@ const EducationItem = (props: {
                 <ListItemBar height={80} now={props.Education.now} />
                 <Stack direction="column" spacing={0.5}>
                     <ListItemText
+                        primaryTypographyProps={{ component: "div" }}
+                        secondaryTypographyProps={{ component: "div" }}
                         primary={
                             <Stack direction="row" spacing={1} alignItems="center">
                                 <Link href={props.Education.url}>
-                                    <Typography variant="body1" component="a">
+                                    <Typography variant="body1">
                                         {props.Education.name}
                                     </Typography>
                                 </Link>
@@ -109,7 +79,7 @@ const EducationItem = (props: {
                         <Typography variant="body1">{`${props.Education.major} - `}</Typography>
                         {props.Education.labUrl ? (
                             <Link href={props.Education.labUrl}>
-                                <Typography variant="body1" component="a">
+                                <Typography variant="body1">
                                     {props.Education.lab}
                                 </Typography>
                             </Link>
@@ -127,14 +97,14 @@ const EducationItem = (props: {
                             >
                                 <Circle sx={{ fontSize: 10, color: "lightgrey" }} />
                                 <Link href={conferencePresentation.url}>
-                                    <Typography variant="body1" component="a">
+                                    <Typography variant="body1">
                                         {conferencePresentation.title}
                                     </Typography>
                                 </Link>
                                 <Typography variant="body2">
                                     {`${conferencePresentation.date} ${conferencePresentation.place}.`}
                                 </Typography>
-                                <Typography variant="body2" component="a">
+                                <Typography variant="body2">
                                     {conferencePresentation.class}
                                 </Typography>
                             </Stack>
@@ -147,6 +117,7 @@ const EducationItem = (props: {
 };
 
 const Education = () => {
+    const { items } = getSectionData<EducationData>("education");
     return (
         <Stack direction="column" spacing={2}>
             <Stack direction="row" spacing={1} alignItems="center">
@@ -154,7 +125,7 @@ const Education = () => {
                 <Typography variant="h5">Education</Typography>
             </Stack>
             <List dense>
-                {EducationList.map((Education, index) => (
+                {items.map((Education, index) => (
                     <EducationItem key={index} Education={Education} />
                 ))}
             </List>

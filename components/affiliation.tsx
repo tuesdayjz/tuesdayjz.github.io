@@ -1,17 +1,16 @@
-"use client";
-
 import { BadgeRounded } from "@mui/icons-material";
 import { List, ListItem, ListItemText, Typography, Stack } from "@mui/material";
 import Link from "next/link";
 import { ListItemBar } from "./listItemBar";
+import { getSectionData } from "@/lib/content";
 
-const School = {
-    school: "Waseda University",
-    degree: "M.Eng in Computer Science",
-    year: "2nd year",
-    supervisor: "Prof. Kazunori Ueda",
-    url: "https://www.ueda.info.waseda.ac.jp/~ueda/index.html",
-};
+interface AffiliationData {
+    school: string;
+    degree: string;
+    year: string;
+    supervisor: string;
+    url: string;
+}
 
 const AffiliationItem = (props: {
     school: string;
@@ -25,6 +24,8 @@ const AffiliationItem = (props: {
             <Stack direction="row" spacing={2} alignItems="center">
                 <ListItemBar height={70} />
                 <ListItemText
+                    primaryTypographyProps={{ component: "div" }}
+                    secondaryTypographyProps={{ component: "div" }}
                     primary={<Typography variant="body1">{props.school}</Typography>}
                     secondary={
                         <Stack>
@@ -44,6 +45,7 @@ const AffiliationItem = (props: {
 };
 
 const Affiliation = () => {
+    const data = getSectionData<AffiliationData>("affiliation");
     return (
         <Stack direction="column" spacing={2}>
             <Stack direction="row" spacing={1} alignItems="center">
@@ -52,11 +54,11 @@ const Affiliation = () => {
             </Stack>
             <List dense>
                 <AffiliationItem
-                    school={School.school}
-                    degree={School.degree}
-                    year={School.year}
-                    supervisor={School.supervisor}
-                    url={School.url}
+                    school={data.school}
+                    degree={data.degree}
+                    year={data.year}
+                    supervisor={data.supervisor}
+                    url={data.url}
                 />
             </List>
         </Stack>

@@ -13,10 +13,10 @@ export const ListItemBar = ({
     const isScreenWidthSmall = useMediaQuery(theme.breakpoints.down("sm"));
     return (
         <Box
-            bgcolor={now ? "lightblue" : "lightgrey"}
+            bgcolor={now ? "#00ff41" : "#1a3a1a"}
             height={height}
             borderRadius={100}
-            width={isScreenWidthSmall ? 0 : 5}
+            width={isScreenWidthSmall ? 0 : 4}
         />
     );
 };
